@@ -4,11 +4,11 @@ def sigmoid(x):
     """
     Vectorized sigmoid function.
     """
-    # Write code here
     ans = np.array(x)
-    ans = -1*ans
+    ans *= -1
     ans = np.exp(ans)
-    ans = ans + 1
+    ans += 1
     ans = 1 / ans
     return ans
+    # Write code here
     pass
