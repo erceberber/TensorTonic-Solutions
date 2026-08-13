@@ -1,0 +1,18 @@
+import numpy as np
+from scipy.special import comb
+
+def binomial_pmf_cdf(n, p, k):
+    """
+    Compute Binomial PMF and CDF.
+    """
+    # Write code here
+    pmf = comb(n, k) * np.power(p, k) * np.power(1-p, n-k)
+
+    cdf = 0
+
+    for i in range(k+1):
+        cdf += comb(n, i) * np.power(p, i) * np.power(1-p, n-i)
+    
+    return (float(pmf), float(cdf))
+    
+    pass
