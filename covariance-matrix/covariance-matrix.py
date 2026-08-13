@@ -10,7 +10,7 @@ def covariance_matrix(X):
 
     shape = xnp.shape
 
-    if shape[0] < 2 or len(shape) < 2:
+    if shape[0] < 2 or len(shape) != 2:
         return None
 
     mean = np.mean(xnp, axis=0)
