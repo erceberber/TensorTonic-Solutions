@@ -7,7 +7,9 @@ def poisson_pmf_cdf(lam, k):
     """
     # Write code here
     def compute_pmf(lam, k):
-        return (np.exp(-1*lam) * np.power(lam, k)) / factorial(k)
+        logp = -1*lam + k*np.log(lam) - np.sum(np.log(np.arange(1, k+1)))
+        p = np.exp(logp)
+        return p
 
     cdf = 0
     for i in range(k+1):
