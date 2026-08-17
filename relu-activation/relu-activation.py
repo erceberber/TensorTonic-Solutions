@@ -4,6 +4,7 @@ def relu(x):
     """
     Implement ReLU activation function.
     """
-    return np.maximum(0, np.array(x))
     # Write code here
+    xnp = np.asarray(x)
+    return np.where(xnp > 0, xnp, 0)
     pass
