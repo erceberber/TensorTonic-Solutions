@@ -5,22 +5,15 @@ def one_hot(y: list, num_classes=None) -> np.ndarray:
     Returns a NumPy array with shape (N, K).
     """
     # Write code here
-    result = []
-    if num_classes is not None:
-        result = []
-        for i in range(len(y)):
-            out = np.zeros(num_classes)
-            out[y[i]] = 1
-            result.append(out)
+    y = np.asarray(y)
 
+    if num_classes is None:
+        num_classes = np.max(y) + 1
 
-    else:
-        K = np.max(y) + 1
-        for i in range(len(y)):
-            out = np.zeros(K)
-            out[y[i]] = 1
-            result.append(out)
+    result = np.zeros((y.size, num_classes))
+    result[np.arange(y.size), y] = 1
 
-    return np.asarray(result)
+    return result
         
     pass
+
