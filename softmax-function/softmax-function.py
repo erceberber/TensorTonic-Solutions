@@ -12,15 +12,11 @@ def softmax(x: list) -> np.ndarray:
         return p
 
     else:
-        p = []
         m = np.max(x, axis=1, keepdims=True)
         x_norm = x - m
         x_norm = np.exp(x_norm)
         s = np.sum(x_norm, axis=1, keepdims=True)
         x_norm /= s
         return x_norm
-
-        
-
-        
+   
     pass
