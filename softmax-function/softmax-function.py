@@ -12,10 +12,11 @@ def softmax(x: list) -> np.ndarray:
 
     else:
         p = []
+
         for i in range(len(x)):
             m = np.max(x[i])
-            s = np.sum(np.exp(x[i]))
-            p_i = np.exp(x[i]) / s
+            s = np.sum(np.exp(x[i] - m))
+            p_i = np.exp(x[i] - m) / s
             p.append(p_i)
 
     return np.asarray(p)
