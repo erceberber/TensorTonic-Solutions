@@ -5,23 +5,16 @@ def target_encoding(categories: list, targets: list) -> list:
     Returns each category replaced by its mean target.
     """
     # Write code here
-    hashmap = {}
-    for i, category in enumerate(categories):
-        if category not in hashmap:
-            hashmap[category] = [targets[i], 1]
-            
+    sums = {}
+    counts = {}
 
-        else:
-            hashmap[category][0] += targets[i]
-            hashmap[category][1] += 1
+    for cat, tar in zip(categories, targets):
+        sums[cat] = sums.get(cat, 0.0) + tar
+        counts[cat] = counts.get(cat, 0) + 1
 
-    result = []
+    means = {cat: sums[cat] / counts[cat] for cat in categories}
 
-    for category in categories:
-        result.append(hashmap[category][0] / hashmap[category][1])
-
-
-    return result
+    return [means[cat] for cat in categories]
     
     pass
 
