@@ -9,17 +9,18 @@ def softmax(x: list) -> np.ndarray:
         m = np.max(x)
         p = np.exp(x - m)
         p /= np.sum(p)
+        return p
 
     else:
         p = []
+        m = np.max(x, axis=1, keepdims=True)
+        x_norm = x - m
+        x_norm = np.exp(x_norm)
+        s = np.sum(x_norm, axis=1, keepdims=True)
+        x_norm /= s
+        return x_norm
 
-        for i in range(len(x)):
-            m = np.max(x[i])
-            s = np.sum(np.exp(x[i] - m))
-            p_i = np.exp(x[i] - m) / s
-            p.append(p_i)
-
-    return np.asarray(p)
+        
 
         
     pass
