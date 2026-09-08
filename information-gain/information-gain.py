@@ -8,11 +8,8 @@ def information_gain(y: list, split_mask: list) -> float:
     ynp = np.asarray(y)
     sm = np.asarray(split_mask)
 
-    true_indices = np.flatnonzero(sm)
-    false_indices = np.flatnonzero(~sm)
-
-    y_left = ynp[true_indices]
-    y_right = ynp[false_indices]
+    y_left = ynp[sm]
+    y_right = ynp[~sm]
 
     n_left = len(y_left)
     n_right = len(y_right)
